@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { motion } from "framer-motion";
 import { services } from "../constants/data";
 import Modal from "./Modal";
 import ServiceDetail from "./ServiceDetail";
 
-const Services = () => {
+const Services = memo(function(){
     const [selectedService, setSelectedService] = useState(null);
     const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
 
@@ -49,6 +49,6 @@ const Services = () => {
             </Modal>
         </>
     )
-}
+})
 
 export default Services;

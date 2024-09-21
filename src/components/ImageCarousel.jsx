@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, memo,  useState } from "react";
 
-const ImageCarousel = ({ images }) => {
+const ImageCarousel = memo( function({ images }) {
     
     const [currentIndex, setCurrentIndex] = useState(0);
   
@@ -30,6 +30,6 @@ const ImageCarousel = ({ images }) => {
         </AnimatePresence>
       </div>
     );
-  };
+  });
 
   export default ImageCarousel;
