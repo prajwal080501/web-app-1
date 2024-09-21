@@ -23,7 +23,7 @@ function App() {
               transition={{ duration: 0.5 }}
               className="text-2xl font-bold text-orange-500"
             >
-              EventMasters
+              Iconic Events
             </motion.div>
             <motion.button
               initial={{ opacity: 0, x: 50 }}
