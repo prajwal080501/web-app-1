@@ -7,36 +7,19 @@ import Testimonials from './components/Testimonials';
 import Services from './components/Services';
 import ImageCarousel from './components/ImageCarousel';
 import { carouselImages } from './constants/data';
+import Header from './components/Header';
+import ImageSlider from './components/ImageSlider';
+import imageArray from './assets';
+import BackToTopButton from './components/BackToTopButton';
 function App() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
-  
+
   return (
     <>
       <div className="bg-zinc-900 text-white min-h-screen">
         {/* Header */}
-        <header className="sticky top-0 z-50 bg-zinc-800 bg-opacity-90 backdrop-filter backdrop-blur-lg">
-          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-2xl font-bold text-orange-500"
-            >
-              Iconic Events
-            </motion.div>
-            <motion.button
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition duration-300"
-              onClick={() => setIsContactModalOpen(true)}
-            >
-              Contact Us
-            </motion.button>
-          </div>
-        </header>
-
+        <Header setIsContactModalOpen={setIsContactModalOpen} brandName="Iconic Events" />
         {/* Hero Section */}
         <section className="relative h-screen flex items-center justify-center text-center">
           <div className="absolute inset-0 z-0">
@@ -76,13 +59,22 @@ function App() {
 
         {/* Testimonial Section */}
         <Testimonials />
-
+        {/* Image Slider */}
+        <div className='mb-10'>
+          <h2 className="text-4xl font-bold text-center my-6 mt-12">Our Gallery</h2>
+          {/* desc */}
+          <p className="text-center text-lg mb-12">
+            Check out some of the events we have organized
+          </p>
+          <ImageSlider images={imageArray} />
+        </div>
         {/* Footer */}
-        <Footer />
+        <Footer brandName={'Iconic Events'} />
         {/* Contact Modal */}
         <Modal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)}>
           <ContactForm onClose={() => setIsContactModalOpen(false)} />
         </Modal>
+        <BackToTopButton />
       </div>
     </>
   )
